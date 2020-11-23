@@ -7,7 +7,7 @@ Directions:
 4) run script by typing >Bash convert_csv.sh
 5) Original csv files will remain unmodified. A new copy of each file will be generated with a "c_" prefix.
 	the generated files will have all tabs replaced by commas
-
+6) to run in linux enviornement execute by entering: sh convert_csv.sh 
 ~~~~~update v1.2~~~~~~
 
 added --overwrite flag

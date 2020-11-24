@@ -1,10 +1,22 @@
 #!/bin/bash
 count=`ls -1 *.CSV 2>/dev/null | wc -l`
 count2=`ls -1 *.csv 2>/dev/null | wc -l`
-if [ $count != 0 ] || [ $count2 != 0 ]; then
+if [ $count != 0 ]; then
 	
 	echo "converting Files"
-	for file in *.csv *.CSV
+	for file in *.CSV
+	do
+		if [ "$1" = "--overwrite" ]
+		then
+			sed 's/\t/,/g' "$file" > "temp";
+			mv temp "$file";
+		else
+			sed 's/\t/,/g' "$file" > "c_${file}"
+		fi
+	done
+elif [ $count2 != 0 ]; then
+	echo "converting .csv";
+	for file in *.csv
 	do
 		if [ "$1" = "--overwrite" ]
 		then
@@ -15,5 +27,5 @@ if [ $count != 0 ] || [ $count2 != 0 ]; then
 		fi
 	done
 else
-	echo "no matching files found"
+	echo"no matching files found"
 fi
